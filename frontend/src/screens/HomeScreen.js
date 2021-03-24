@@ -1,7 +1,13 @@
 import React from "react";
-
+import { Hero } from "../components/Hero";
+import SubscribeBox from "../components/SubscribeBox";
 const HomeScreen = () => {
-  return <div>Home</div>;
+  return (
+    <>
+      <Hero />
+      <SubscribeBox />
+    </>
+  );
 };
 
 export default HomeScreen;

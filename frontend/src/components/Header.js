@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { logout } from "../actions/userActions";
 import logo from "../images/logo.png";
 
-export const Header = () => {
+const Header = () => {
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
@@ -19,7 +19,7 @@ export const Header = () => {
 
   return (
     <header className="bg-white shadow-sm">
-      <nav className="container mx-auto flex items-center justify-between flex-wrap py-4 px-2 sm:px-0">
+      <nav className="container mx-auto flex items-center justify-between flex-wrap py-4 px-2 sm:px-0 font-body">
         <Link to="/">
           <img src={logo} className="h-12" alt="mobile wash" />
         </Link>
@@ -48,31 +48,32 @@ export const Header = () => {
             className="text-sm flex justify-between w-96
           "
           >
-            <a
-              href="/"
+            <Link
+              to="/"
               className="block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-secondary mr-"
             >
               Home
-            </a>
-            <a
-              href="/services"
+            </Link>
+            <Link
+              to="/services"
+              n
               className="block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-secondary mr-"
             >
               Services
-            </a>
-            <a
-              href="/services"
+            </Link>
+            <Link
+              to="/book"
               className="block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-secondary mr-"
             >
-              Contact
-            </a>
+              Appointment
+            </Link>
 
             <div className="relative">
               {userInfo ? (
                 <>
                   <button
                     type="button"
-                    class="text-blue-500 group bg-white rounded-md inline-flex items-center  font-medium hover:text-blue-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    class="z-10 relative text-blue-500 group bg-white rounded-md inline-flex items-center  font-medium hover:text-blue-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     aria-expanded="false"
                     onClick={() => toggleMenu(!isMenuOpen)}
                   >
@@ -92,48 +93,54 @@ export const Header = () => {
                     </svg>
                   </button>
                   {isMenuOpen && (
-                    <div
-                      className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none "
-                      role="menu"
-                      aria-orientation="vertical"
-                      aria-labelledby="options-menu"
-                    >
-                      <div className="py-1" role="none">
-                        <a
-                          href="#"
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                          role="menuitem"
-                        >
-                          My Appointments
-                        </a>
-                        <Link
-                          to="/profile"
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                          role="menuitem"
-                        >
-                          My Profile
-                        </Link>
-                        <form method="POST" action="#" role="none">
-                          <button
-                            type="submit"
-                            className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                            role="menuitem"
-                            onClick={logoutHandler}
-                          >
-                            Sign out
-                          </button>
-                        </form>
-                      </div>
-                    </div>
+                    <button
+                      onClick={() => toggleMenu(false)}
+                      className="fixed top-0 right-0 bottom-0 left-0 w-full h-full bg-black opacity-50 cursor-default"
+                      tabIndex="-1"
+                    ></button>
                   )}
+
+                  <div
+                    className={`${
+                      isMenuOpen ? `block` : `hidden`
+                    } origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none `}
+                    role="menu"
+                    aria-orientation="vertical"
+                    aria-labelledby="options-menu"
+                    onClick={() => toggleMenu(false)}
+                  >
+                    <div className="py-1" role="none">
+                      <Link
+                        to="#"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                        role="menuitem"
+                      >
+                        My Appointments
+                      </Link>
+                      <Link
+                        to="/profile"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                        role="menuitem"
+                      >
+                        My Profile
+                      </Link>
+                      <form method="POST" action="#" role="none">
+                        <button
+                          type="submit"
+                          className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                          role="menuitem"
+                          onClick={logoutHandler}
+                        >
+                          Sign out
+                        </button>
+                      </form>
+                    </div>
+                  </div>
                 </>
               ) : (
-                <a
-                  href="/login"
-                  className="block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-secondary mr-"
-                >
-                  Login
-                </a>
+                <button className="block mt-4 sm:inline-block sm:mt-0  hover:text-secondary mr-">
+                  <Link to="/login"> Login</Link>
+                </button>
               )}
             </div>
           </div>
@@ -142,3 +149,5 @@ export const Header = () => {
     </header>
   );
 };
+
+export default Header;

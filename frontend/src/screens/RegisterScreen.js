@@ -39,9 +39,11 @@ const RegisterScreen = ({ location, history }) => {
   };
 
   return (
-    <div className="bg-white lg:w-8/12 md:6/12 w-10/12 m-auto my-10 shadow-md">
+    <div className="bg-primary lg:w-6/12 md:6/12 w-10/12 m-auto my-10 shadow-md">
       <div className="py-8 px-8 rounded-xl">
-        <h1 className="font-medium text-2xl mt-3 text-center">Sign Up</h1>
+        <h1 className="uppercase font-black text-2xl mt-3 text-center">
+          Sign Up
+        </h1>
         {message && <Message>{message}</Message>}
 
         {error && <Message>{error}</Message>}
@@ -114,10 +116,10 @@ const RegisterScreen = ({ location, history }) => {
         <p className="mt-12 text-xs text-center font-light text-gray-400">
           {" "}
           Already have an account?{" "}
-          <a href="../auth/register.html" className="text-black font-medium">
+          <Link to="/login" className="text-black font-medium">
             {" "}
             Sign In{" "}
-          </a>{" "}
+          </Link>{" "}
         </p>
       </div>
     </div>

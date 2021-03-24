@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserDetails, updateUserProfile } from "../actions/userActions";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
+import { getUserDetails, updateUserProfile } from "../actions/userActions";
 
 const ProfileScreen = ({ location, history }) => {
   const [name, setName] = useState("");
@@ -20,6 +20,9 @@ const ProfileScreen = ({ location, history }) => {
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+
+  const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
+  const { success } = userUpdateProfile;
 
   useEffect(() => {
     if (!userInfo) {
@@ -41,7 +44,7 @@ const ProfileScreen = ({ location, history }) => {
     } else {
       setMessage(null);
 
-      dispatch(updateUserProfile(name, email, password));
+      dispatch(updateUserProfile({ id: user._id, name, email, password }));
     }
   };
 
@@ -50,6 +53,8 @@ const ProfileScreen = ({ location, history }) => {
       <div className="py-8 px-8 rounded-xl">
         <h1 className="font-medium text-2xl mt-3 text-center">Your Profile</h1>
         {message && <Message>{message}</Message>}
+
+        {success && <h1>Profile Updated</h1>}
 
         {error && <Message>{error}</Message>}
         {loading && <Loader />}

@@ -21,7 +21,7 @@ const ServiceScreen = ({ match }) => {
     <>
       <div className="container mx-auto">
         <Link to="/services">
-          <button className="py-2 px-4 rounded-md bg-gray-200 hover:bg-blue-200 duration-300 ease-in-out">
+          <button className="py-2 px-4 my-2 rounded-md bg-gray-100 hover:bg-blue-200 duration-300 ease-in-out">
             Go back
           </button>
         </Link>

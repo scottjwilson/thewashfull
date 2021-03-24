@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Service = ({ service }) => {
   return (
     <>
-      <article className="bg-gray-100">
+      <article className="bg-white">
         <div className="flex flex-col lg:p-24 md:p-12 p-6 ">
           <h1 className="text-secondary text-3xl md:text-5xl font-bold">
             ${service.price}

@@ -1,5 +1,5 @@
-import React from "react"
-import hero from "../../images/hero.jpg"
+import React from "react";
+import hero from "../../images/hero.jpg";
 
 export const Hero = () => {
   return (
@@ -7,7 +7,7 @@ export const Hero = () => {
       <div className="h-screen lg:grid grid-cols-2 items-center container mx-auto px-2 sm:px-0">
         <div className="flex flex-col py-2 lg:py-8 md:mx-2">
           <div className="w-64 sm:w-full">
-            <h1 className="text-4xl md:text-6xl lg:text-8xl font-semibold text-gray-800 tracking-wide leading-tight">
+            <h1 className="font-title text-4xl md:text-6xl lg:text-8xl font-semibold text-gray-800 tracking-wide leading-tight">
               FASTEST AND DETAILED <br />
               <span className="text-secondary">CAR WASH</span>
             </h1>
@@ -60,5 +60,5 @@ export const Hero = () => {
         </div>
       </div>
     </header>
-  )
-}
+  );
+};

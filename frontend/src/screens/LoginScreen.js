@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import FormContainer from "../components/FormContainer";
+import PageHero from "../";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import { login } from "../actions/userActions";
@@ -29,9 +29,11 @@ const LoginScreen = ({ location, history }) => {
   };
 
   return (
-    <div className="bg-white lg:w-4/12 md:6/12 w-10/12 m-auto my-10 shadow-md">
+    <div className="bg-primary lg:w-6/12 md:6/12 w-10/12 m-auto my-10 shadow-md">
       <div className="py-8 px-8 rounded-xl">
-        <h1 className="font-medium text-2xl mt-3 text-center">Login</h1>
+        <h1 className="uppercase font-black text-2xl mt-3 text-center">
+          Login
+        </h1>
         {error && <Message>{error}</Message>}
         {loading && <Loader />}
         <form onSubmit={submitHandler} className="mt-6">
@@ -66,7 +68,7 @@ const LoginScreen = ({ location, history }) => {
             </div>
           </div>
 
-          <button className="block text-center text-white bg-gray-800 p-3 duration-300 rounded-sm hover:bg-black w-full">
+          <button className="uppercase font-black block text-center text-white bg-gray-800 p-3 duration-300 rounded-sm hover:bg-black w-full">
             Login
           </button>
         </form>

@@ -13,7 +13,7 @@ const ServiceItem = ({ service }) => {
   const sizesPrices = Object.values(allSizes);
 
   return (
-    <div className="bg-gray-100 shadow flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center">
       <h1 className="text-3xl uppercase">{title}</h1>
       {price}
       <ul>

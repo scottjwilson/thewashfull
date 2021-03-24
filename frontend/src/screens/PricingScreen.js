@@ -27,7 +27,7 @@ const PricingScreen = () => {
         ) : error ? (
           <Message>{error}</Message>
         ) : (
-          <div className="grid lg:grid-cols-3 bg-white rounded-lg shadow-2xl container mx-auto">
+          <div className="grid lg:grid-cols-3 -mt-20 shadow-2xl container mx-auto">
             {services.map((service) => {
               return <Service service={service} />;
             })}
